@@ -8,26 +8,24 @@
 	text-decoration: none;
 	list-style: none;
 	color:black;
-	vertical-align: baseline;
+	/*vertical-align: baseline;*/
+}
+
+a:hover{
+	text-decoration: none;
+
 }
 
 body{
-	margin:0px;
-	padding:0px;
+	margin:0;
+	padding:0;
 }
 
-div.clear{
-	clear:both;
-}
 @font-face {
     font-family: "Neutra-Text";
     src: url(../NeutraText-LightAlt.ttf) format("truetype");
 }
 
-/*section{
-	margin-bottom: 10px;
-}
-*/
 .hidden{
 	display: none;
 }
@@ -36,46 +34,55 @@ a:hover, a > li:hover{
 	text-decoration: underline;
 }
 
-/*********** HEADER  ************/
+h1{
+	text-align: center;
+	font-family: 'Neutra-Text', sans-serif;
+
+	font-size: 2.7rem;
+
+	color:#D4AF37;	
+	padding:0 0.8em;
+
+}
+
+/***********Nav*/
+
 nav{
 	background-color: white;
 	z-index: 5;
-	position: fixed;
+	position: sticky;
 	width:100%;
 	top:0;
 	left:0;
 	box-shadow: 2px 0px 4px black;
-}
 
-h1{
-	/*text*/
-
-	width:40%;
-	text-align: center;
-	font-family: 'Neutra-Text', sans-serif;
-	color:black;
-	font-size: 3.5em;
-
-	display: inline-block;
-
-	color:#D4AF37;	
-
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
 
 }
+
+
 
 ul#nav{
-	display: inline-block;
-	width:59%;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: flex-end;
+
+	padding:0 0.6em;
+
 }
 
 ul#nav li{
-	display: inline-block;
-	width:23%;
-	margin:0 0.5%;
+
 	text-align:center;
 	font-family: 'Work Sans', sans-serif;
-	font-weight: 300px;
-	font-size: 1.4em;
+	font-size: 150%;
+	padding:0 1.2em;
+
 }
 
 
@@ -85,29 +92,9 @@ li.selected{
 	border-bottom: 2px solid #D4AF37;
 }
 
-
-header{
-	position:sticky;
-	top:0;
-	left:0;
-	z-index: -1;
-	height:100vh;
-	overflow: hidden;
+li.selected:hover{
+	text-decoration: none;
 }
-
-header video, header .headerImg{
-	width:100%;
-	height:100vh;
-	
-	object-fit: fill;
-	background-color: black;
-	overflow: hidden;
-
-
-}
-
-
-/****** CONTENT *****/
 
 .content{
 	background-color: white;
@@ -129,79 +116,95 @@ h2{
 h3{
 	font-family: 'Work Sans', sans-serif;
 	font-weight: 300;
-	font-size: 30px;
+	font-size: 1.5em;
 	color:white;
-	width:80%;
-	margin:auto;
-	padding:2%;
+	width:90%;
+	margin:0;
+	padding-left:1%;
 	background-color:rgba(0, 0, 0, 0.7);
 	text-align: left;
+
+	display: inline-block;
+/*	height: 8vh;
+*/	line-height: 8vh;
 }
 
 p{
-	width:60%;
+	width:70%;
 	margin:auto;
 	font-family: "Kanit",sans-serif;
 	font-weight: bold;
 	font-size: 1.8em;
 }
 
-/*******Board************/
+/*********** HEADER  ************/
 
-
-
-section.board div.members{
-	width:90%;
-	margin:auto;
-
+header{
+	position:sticky;
+	top:0;
+	left:0;
+	z-index: -1;
+	height:100vh;
+	overflow: hidden;
 }
 
-div.members .row{
-	display: flex;
+
+
+header video, header .headerImg{
 	width:100%;
-	flex-wrap: wrap;
-	align-content: space-between;
-	justify-content: space-around;
-
-	align-items: center;
-}
-
-div.members .image{
-	display: inline-block;
-
-	width:24%;
-	margin:0.5%;
+	height:100vh;
 	
+	object-fit: fill;
+	background-color: black;
+	overflow: hidden;
+
 }
 
-section.board img{
-	width:100%;
+/*For pages with text over the image*/
 
+.over{
+	width:100%;
+	height:100vh;
+	position: absolute;
+	top: 0;
+	left:0;
+	background-color:rgb(0,0,0);
+	background-color:rgba(0,0,0,0.6);
+	z-index: 1;
 }
 
-
-
-/***** DANCERS ******/
-section.dancers .row{
-	display: flex;
+h1.title{
 	width:100%;
-	align-content: center;
-	justify-content: center;
+	text-align: center;
+	font-family: 'Neutra-Text', sans-serif;
+	color:white;
+	font-size: 80px;
+	letter-spacing: 20px;
+	line-height: 65vh;
+}
+
+p.credit{
+	position: absolute;
+	bottom:2%;
+	left:1%;
+	color:white;
+	z-index: 2;
+	font-size: 1em;
+}
+
+/*Image Overlay*/
+
+.image img{
+	width:100%;
 }
 
 .image{
 	position:relative;
-	
 	display: inline-block;
-	
 	transition: all .2s ease-in-out;
-	/*height:280.5px;*/
 }
 
-section.dancers img{
-	width:100%;
 
-}
 
 .image:after, .image:before {
     position:absolute;
@@ -211,7 +214,7 @@ section.dancers img{
 }
 .image:after {
     content:'\A';
-    width:100%; height:100%;
+    width:100%; height:99%;
     top:0; left:0;
     background:rgba(0,0,0,0.6);
 }
@@ -222,7 +225,7 @@ section.dancers img{
     z-index:1;
     top:44%;
     text-align:center;
-    font-size: 34px;
+    font-size: 1.5rem;
     font-weight: 400;
     font-family: 'Work Sans', sans-serif;
    /* letter-spacing: 2px;*/
@@ -236,12 +239,8 @@ section.dancers img{
     opacity:1;
 }
 
+/***********/
 
-
-
-
-
-/***** FOOTER ******/
 footer{
 /*	margin-top: 40px;
 */	background-color:rgb(102, 102, 102);
@@ -270,3 +269,126 @@ footer{
 footer p{
 	font-size: 1.2em;
 }
+
+
+/****************************/
+/*******MAIN PAGE************/
+/****************************/
+
+
+section.board div.members{
+	width:90%;
+	margin:auto;
+
+}
+
+div.members{
+	display: flex;
+	width:100%;
+	flex-wrap: wrap;
+	align-content: space-around;
+	justify-content: space-around;
+
+	align-items: flex-start;
+}
+
+div.members .image{
+	width:24%;
+}
+
+
+section.links-to-dancer-page .row{
+	display: flex;
+	width:100%;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+}
+
+section.links-to-dancer-page img{
+	width:100%;
+}
+
+/****************************/
+/*******dancer page**********/
+/****************************/
+
+div.dancer-group{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: center;
+	align-items: baseline;
+
+	width:100%;
+	margin:auto;
+}
+
+article.dancer{
+	display: inline-block;
+	width:20%;
+
+}
+
+
+div.bio{
+	display: none;
+}
+
+div.bio p{
+	font-size: 1.2em;
+}
+
+div.bio i.closeButton{
+	position: relative;
+	display: inline-block;
+	width:10%;
+	margin:0;
+	/*background-color: red;*/
+
+	text-align: center;
+	font-size: 1.5em;
+	color:white;
+
+	background-color:rgba(0, 0, 0, 0.7);
+	line-height: 8vh;
+}
+
+div.bio i.closeButton:hover{
+	cursor: pointer;
+	color:#D4AF37;
+}
+
+article.dancer.selected{
+	width:100%;
+	display:flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+
+}
+
+article.dancer.selected div.bio{
+	display: inline-block;
+	width: 80%;
+}
+
+article.dancer.selected div.image{
+	display: inline-block;
+	width:20%;
+}
+
+article.dancer.selected div.image:hover{
+	transform: none;
+}
+
+article.dancer.selected div.image:hover:after, article.dancer.selected div.image:hover:before {
+    opacity:0;
+}
+
+
+
+
+
+
+
+
